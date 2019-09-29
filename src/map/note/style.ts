@@ -1,15 +1,22 @@
 "use strict";
 
-import L from "leaflet";
+import L, { LatLng } from "leaflet";
 
 import icons from "./icons";
+import popupContent from "./popup";
 
-export default function(feature: GeoJSON.Feature, latlng: Object) {
-  console.log(feature, latlng);
-
+export default function(feature: GeoJSON.Feature, latlng: LatLng) {
   const { status } = feature.properties;
 
-  return new L.Marker(latlng, {
+  const marker = L.marker(latlng, {
     icon: icons[status]
   });
+
+  const popup = popupContent(feature);
+
+  marker.bindPopup(popup, {
+    minWidth: 250
+  });
+
+  return marker;
 }

@@ -1,28 +1,30 @@
 "use strict";
 
-import L from "leaflet";
+import { get } from "svelte/store";
+
+import L, { Map, LatLng, LatLngBounds } from "leaflet";
 
 import { url } from "../../api/init";
+import { notesLayer } from "../store";
 import styleFunction from "./style";
-import popupFunction from "./popup";
+import { Feature } from "geojson";
 
-async function get(bbox: string): Promise<GeoJSON.FeatureCollection> {
-  const response = await fetch(`${url}/notes.json?bbox=${bbox}`);
+async function getNotes(
+  bbox: LatLngBounds
+): Promise<GeoJSON.FeatureCollection> {
+  const response = await fetch(`${url}/notes.json?bbox=${bbox.toBBoxString()}`);
 
   return response.ok ? response.json() : null;
 }
 
-export default async function(map: any) {
-  const bounds = map.getBounds().toBBoxString();
+export default async function(map: Map) {
+  const layer = get(notesLayer);
 
-  const json = await get(bounds);
+  const json = await getNotes(map.getBounds());
+
+  layer.clearLayers();
 
   if (json !== null) {
-    console.log(json);
-
-    L.geoJSON(json, {
-      pointToLayer: (feature, latlng) => styleFunction(feature, latlng),
-      onEachFeature: (feature, layer) => popupFunction(feature, layer)
-    }).addTo(map);
+    layer.addData(json);
   }
 }
