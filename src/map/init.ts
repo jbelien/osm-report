@@ -9,7 +9,6 @@ import {
 } from "./store";
 import createNotesLayer from "./note/layer";
 import loadNotes from "./note/load";
-import clearNotes from "./note/clear";
 
 export default function(container: HTMLElement) {
   const map = L.map(container).setView([0.0, 0.0], 2);
