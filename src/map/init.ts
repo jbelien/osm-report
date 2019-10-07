@@ -1,6 +1,6 @@
 "use strict";
 
-import L, { LeafletEvent } from "leaflet";
+import L, { LeafletEvent, LeafletMouseEvent } from "leaflet";
 import "leaflet.locatecontrol";
 
 import {
@@ -9,6 +9,7 @@ import {
 } from "./store";
 import createNotesLayer from "./note/layer";
 import loadNotes from "./note/load";
+import addMarker from "./note/add";
 
 export default function(container: HTMLElement) {
   const map = L.map(container).setView([0.0, 0.0], 2);
@@ -38,6 +39,9 @@ export default function(container: HTMLElement) {
     },
     zoomend: (event: LeafletEvent) => {
       loadNotes(event.target);
+    },
+    click: (event: LeafletMouseEvent) => {
+      addMarker(event);
     }
   });
 

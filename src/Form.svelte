@@ -1,3 +1,14 @@
+<script>
+  import Location from "./Location.svelte";
+  import { marker as markerStore } from "./map/store.ts";
+
+  let note;
+
+  function handleSubmit() {
+    console.log(note, $markerStore.getLatLng());
+  }
+</script>
+
 <style>
   textarea {
     border: 1px solid #ccc;
@@ -22,9 +33,12 @@
   }
 </style>
 
-<form autocomplete="off">
-  <textarea name="note"></textarea>
-  <button type="submit">
+<form autocomplete="off" on:submit|preventDefault="{handleSubmit}">
+  <textarea bind:value="{note}"></textarea>
+  {#if $markerStore}
+  <Location longitude="{$markerStore.getLatLng().lng}" latitude="{$markerStore.getLatLng().lat}"/>
+  {/if}
+  <button type="submit" disabled="{!note || !$markerStore}">
     <i class="far fa-paper-plane"></i>
     Send
   </button>
