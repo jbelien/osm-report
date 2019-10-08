@@ -1,11 +1,9 @@
 "use strict";
 
-import L, { Map, LatLng, LatLngBounds, Layer, GeoJSON } from "leaflet";
+import { Map, LatLngBounds, GeoJSON } from "leaflet";
 
 import { url } from "../../api/init";
 import { notesLayer as notesLayerStore } from "../store";
-import styleFunction from "./style";
-import { Feature } from "geojson";
 
 async function getNotes(
   bbox: LatLngBounds
