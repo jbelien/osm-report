@@ -1,11 +1,15 @@
 "use strict";
 
-import { get } from "svelte/store";
+import { GeoJSON } from "leaflet";
 
-import { notesLayer } from "../store";
+import { notesLayer as notesLayerStore } from "../store";
 
 export default function() {
-  const layer = get(notesLayer);
+  let layer: GeoJSON;
+
+  notesLayerStore.subscribe(value => {
+    layer = value;
+  });
 
   layer.clearLayers();
 }
