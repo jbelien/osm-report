@@ -5,9 +5,11 @@ import "leaflet.locatecontrol";
 
 import {
   baseLayer as baseLayerStore,
-  notesLayer as notesLayerStore
+  notesLayer as notesLayerStore,
+  zoom as zoomStore
 } from "./store";
 import createNotesLayer from "./note/layer";
+import clearNotes from "./note/clear";
 import loadNotes from "./note/load";
 import addMarker from "./note/add";
 
@@ -33,12 +35,21 @@ export default function(container: HTMLElement) {
   baseLayerStore.set(baseLayer);
   notesLayerStore.set(notesLayer);
 
+  let zoom: number;
+  zoomStore.subscribe(value => {
+    zoom = value;
+  });
+
   map.on({
     moveend: (event: LeafletEvent) => {
-      loadNotes(event.target);
+      clearNotes();
+
+      if (zoom > 12) {
+        loadNotes(event.target);
+      }
     },
     zoomend: (event: LeafletEvent) => {
-      loadNotes(event.target);
+      zoomStore.set(event.target.getZoom());
     },
     click: (event: LeafletMouseEvent) => {
       addMarker(event);

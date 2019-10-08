@@ -3,22 +3,41 @@
 
   import init from "./map/init.ts";
   import loadNotes from "./map/note/load.ts";
+  import { zoom } from "./map/store";
 
   let container;
 
   onMount(() => {
     const map = init(container);
-    loadNotes(map);
 
     return () => {};
   });
 </script>
 
 <style>
-  div {
-    height: 100%;
-    width: 100%;
+  .overlay {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: calc(100vw - 4em);
+    max-width: 32em;
+    max-height: calc(100vh - 4em);
+    overflow: auto;
+    transform: translate(-50%, -50%);
+    padding: 1em;
+    border-radius: 0.2em;
+    background: rgba(255, 255, 255, 0.75);
+    z-index: 500;
   }
 </style>
 
-<div bind:this="{container}"></div>
+<div style="position: relative; height: 100%; width: 100%;">
+  <div bind:this="{container}" style="height: 100%; width: 100%;"></div>
+  <div class="overlay" hidden="{$zoom > 12}">
+    <p>Please zoom in to display existing notes or add a new note !</p>
+    <p>
+      You can also click on the button <i class="fa fa-map-marker"></i> to zoom
+      on your current location.
+    </p>
+  </div>
+</div>

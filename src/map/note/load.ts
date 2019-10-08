@@ -22,8 +22,6 @@ export default async function(map: Map) {
 
   const json = await getNotes(map.getBounds());
 
-  layer.clearLayers();
-
   if (json !== null) {
     layer.addData(json);
   }
