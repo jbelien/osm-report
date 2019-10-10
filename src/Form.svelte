@@ -12,6 +12,11 @@
 </script>
 
 <style>
+  form {
+    align-self: stretch;
+    flex-grow: 1;
+  }
+
   textarea {
     border: 1px solid #ccc;
     border-radius: 0.25rem;
