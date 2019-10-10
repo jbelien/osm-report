@@ -1,17 +1,9 @@
 "use strict";
 
-import { Map, LatLngBounds, GeoJSON } from "leaflet";
+import { Map, GeoJSON } from "leaflet";
 
-import { url } from "../../api/init";
 import { notesLayer as notesLayerStore } from "../store";
-
-async function getNotes(
-  bbox: LatLngBounds
-): Promise<GeoJSON.FeatureCollection | null> {
-  const response = await fetch(`${url}/notes.json?bbox=${bbox.toBBoxString()}`);
-
-  return response.ok ? response.json() : null;
-}
+import getNotes from "../../api/get";
 
 export default async function(map: Map) {
   let layer: GeoJSON;
