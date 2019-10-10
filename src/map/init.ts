@@ -4,6 +4,7 @@ import L, { LeafletEvent, LeafletMouseEvent } from "leaflet";
 import "leaflet.locatecontrol";
 
 import {
+  map as mapStore,
   baseLayer as baseLayerStore,
   notesLayer as notesLayerStore,
   zoom as zoomStore
@@ -15,6 +16,8 @@ import addMarker from "./note/add";
 
 export default function(container: HTMLElement) {
   const map = L.map(container).setView([0.0, 0.0], 2);
+
+  mapStore.set(map);
 
   L.control.scale().addTo(map);
   L.control.locate({ showPopup: false }).addTo(map);

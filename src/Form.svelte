@@ -1,11 +1,13 @@
 <script>
   import Location from "./Location.svelte";
-  import { marker as markerStore } from "./map/store.ts";
+
+  import { map as mapStore, marker as markerStore } from "./map/store.ts";
+  import submit from "./form/submit.ts";
 
   let note;
 
   function handleSubmit() {
-    console.log(note, $markerStore.getLatLng());
+    submit(note, $mapStore);
   }
 </script>
 
