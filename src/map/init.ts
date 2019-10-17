@@ -43,13 +43,22 @@ export default function (container: HTMLElement): Map {
     zoom = value;
   });
 
-  map.on({
-    moveend: (event: LeafletEvent) => {
-      clearNotes();
+  let autopan = false;
 
-      if (zoom > 12) {
-        loadNotes(event.target);
+  map.on({
+    autopanstart: () => {
+      autopan = true;
+    },
+    moveend: (event: LeafletEvent) => {
+      if (autopan !== true) {
+        clearNotes();
+
+        if (zoom > 12) {
+          loadNotes(event.target);
+        }
       }
+
+      autopan = false;
     },
     zoomend: (event: LeafletEvent) => {
       zoomStore.set(event.target.getZoom());
