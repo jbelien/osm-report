@@ -9,7 +9,7 @@ export default class {
 
   shouldUpdate = true;
 
-  constructor(map: Map) {
+  constructor (map: Map) {
     this.map = map;
 
     if (window.location.hash !== "") {
@@ -63,7 +63,7 @@ export default class {
     });
   }
 
-  private apply(): void {
+  private apply (): void {
     this.map.setView(this.center, this.zoom);
   }
 }
