@@ -6,8 +6,13 @@
 <style>
   div {
     display: flex;
-    height: 100%;
-    justify-content: flex-start;
+    min-height: 100%;
+  }
+
+  @media (max-width: 768px) {
+    div {
+      flex-direction: column-reverse;
+    }
   }
 </style>
 

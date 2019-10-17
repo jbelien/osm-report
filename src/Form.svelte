@@ -38,6 +38,12 @@
   button:hover {
     background-color: #ccc;
   }
+
+  @media (max-width: 768px) {
+    textarea {
+      height: 150px;
+    }
+  }
 </style>
 
 <form autocomplete="off" on:submit|preventDefault="{handleSubmit}">

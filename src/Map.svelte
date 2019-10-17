@@ -17,6 +17,11 @@
 </script>
 
 <style>
+  div.map {
+    flex-grow: 1;
+    position: relative;
+  }
+
   .overlay {
     position: absolute;
     left: 50%;
@@ -31,9 +36,15 @@
     background: rgba(255, 255, 255, 0.75);
     z-index: 500;
   }
+
+  @media (max-width: 768px) {
+    div.map {
+      height: 75vh;
+    }
+  }
 </style>
 
-<div style="position: relative; height: 100%; width: 100%;">
+<div class="map">
   <div bind:this="{container}" style="height: 100%; width: 100%;"></div>
   <div class="overlay" hidden="{$zoom > 12}">
     <p>Please zoom in to display existing notes or add a new note !</p>

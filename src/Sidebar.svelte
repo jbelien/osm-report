@@ -6,12 +6,13 @@
 <style>
   div.sidebar {
     display: flex;
+    flex-basis: 33%;
     flex-direction: column;
     padding: 10px;
-    width: 33%;
   }
 
   footer {
+    margin-top: 1rem;
     font-size: small;
     text-align: center;
   }
