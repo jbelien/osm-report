@@ -4,11 +4,13 @@
   import init from "./map/init.ts";
   import loadNotes from "./map/note/load.ts";
   import { zoom } from "./map/store";
+  import Permalink from "./map/permalink";
 
   let container;
 
   onMount(() => {
     const map = init(container);
+    const permalink = new Permalink(map);
 
     return () => {};
   });
