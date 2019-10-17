@@ -5,7 +5,7 @@ import { Map, GeoJSON } from "leaflet";
 import { notesLayer as notesLayerStore } from "../store";
 import getNotes from "../../api/get";
 
-export default async function(map: Map) {
+export default async function (map: Map): Promise<GeoJSON.FeatureCollection> {
   let layer: GeoJSON;
 
   notesLayerStore.subscribe(value => {
@@ -17,4 +17,6 @@ export default async function(map: Map) {
   if (json !== null) {
     layer.addData(json);
   }
+
+  return json;
 }

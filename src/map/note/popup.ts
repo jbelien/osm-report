@@ -2,12 +2,13 @@
 
 import moment from "moment";
 
-export default function(feature: GeoJSON.Feature) {
-  const { id, comments, date_created } = feature.properties;
+export default function (feature: GeoJSON.Feature): string {
+  const { id, comments } = feature.properties;
+  const date = feature.properties.date_created;
 
   if (comments.length > 0) {
     const comment = comments[0].html;
-    const age = moment(date_created, "YYYY-MM-DD HH:mm:SS UTC", true).fromNow();
+    const age = moment(date, "YYYY-MM-DD HH:mm:SS UTC", true).fromNow();
 
     let content = `<p><strong>Posted ${age}</strong></p>`;
     content += `<p>${comment}</p>`;

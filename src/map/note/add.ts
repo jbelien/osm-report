@@ -4,7 +4,7 @@ import L, { LeafletMouseEvent, Marker } from "leaflet";
 
 import { marker as markerStore, zoom as zoomStore } from "../store";
 
-export default function(event: LeafletMouseEvent) {
+export default function (event: LeafletMouseEvent): void {
   let marker: Marker;
   let zoom: number;
 

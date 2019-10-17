@@ -4,7 +4,7 @@ import { LatLng } from "leaflet";
 
 import { url } from "./init";
 
-export default async function(
+export default async function (
   latlng: LatLng,
   text: string
 ): Promise<GeoJSON.Feature | null> {

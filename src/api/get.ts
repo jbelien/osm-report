@@ -4,7 +4,7 @@ import { LatLngBounds } from "leaflet";
 
 import { url } from "./init";
 
-export default async function(
+export default async function (
   bbox: LatLngBounds
 ): Promise<GeoJSON.FeatureCollection | null> {
   const response = await fetch(

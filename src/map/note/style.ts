@@ -1,11 +1,11 @@
 "use strict";
 
-import L, { LatLng } from "leaflet";
+import L, { LatLng, Marker } from "leaflet";
 
 import icons from "./icons";
 import popupContent from "./popup";
 
-export default function(feature: GeoJSON.Feature, latlng: LatLng) {
+export default function (feature: GeoJSON.Feature, latlng: LatLng): Marker {
   const { status } = feature.properties;
 
   const marker = L.marker(latlng, {

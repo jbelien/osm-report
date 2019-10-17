@@ -7,7 +7,7 @@ import postNote from "../api/post";
 import clearNotes from "../map/note/clear";
 import load from "../map/note/load";
 
-export default function(note: string, map: Map) {
+export default function (note: string, map: Map): void {
   let marker: Marker;
   markerStore.subscribe(value => {
     marker = value;
