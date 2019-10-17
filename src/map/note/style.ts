@@ -14,9 +14,7 @@ export default function (feature: GeoJSON.Feature, latlng: LatLng): Marker {
 
   const popup = popupContent(feature);
 
-  marker.bindPopup(popup, {
-    minWidth: 250
-  });
+  marker.bindPopup(popup, {});
 
   return marker;
 }
