@@ -2,13 +2,15 @@
 
 import { LatLng } from "leaflet";
 
-import { url } from "./init";
+import { hashtag, url } from "./init";
 
 export default async function (
   latlng: LatLng,
-  text: string
+  message: string
 ): Promise<GeoJSON.Feature | null> {
   const { lat, lng } = latlng;
+
+  const text = `${message}\r\n${hashtag}`;
 
   const response = await fetch(
     `${url}/notes.json?lat=${lat}&lon=${lng}&text=${encodeURIComponent(text)}`,
