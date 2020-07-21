@@ -1,15 +1,15 @@
 "use strict";
 
-import L, { LatLng, Layer } from "leaflet";
+import { GeoJSON, LatLng, Layer, Marker } from "leaflet";
 
 import styleFunction from "./style";
 
 export default function (): Layer {
-  return L.geoJSON(null, {
-    filter: (feature: GeoJSON.Feature) => {
+  return new GeoJSON(null, {
+    filter: (feature: GeoJSON.Feature): boolean => {
       return feature.properties.comments.length > 0;
     },
-    pointToLayer: (feature: GeoJSON.Feature, latlng: LatLng) => {
+    pointToLayer: (feature: GeoJSON.Feature, latlng: LatLng): Marker => {
       return styleFunction(feature, latlng);
     }
   });

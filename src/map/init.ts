@@ -1,6 +1,6 @@
 "use strict";
 
-import L, { LeafletEvent, LeafletMouseEvent, Map } from "leaflet";
+import L, { Control, LeafletEvent, LeafletMouseEvent, Map, TileLayer } from "leaflet";
 import "leaflet.locatecontrol";
 
 import {
@@ -15,14 +15,16 @@ import loadNotes from "./note/load";
 import addMarker from "./note/add";
 
 export default function (container: HTMLElement): Map {
-  const map = L.map(container).setView([0.0, 0.0], 2);
+  const map = new Map(container).setView([0.0, 0.0], 2);
 
   mapStore.set(map);
 
-  L.control.scale().addTo(map);
+  (new Control.Scale()).addTo(map);
+
+  // @ts-expect-error
   L.control.locate({ showPopup: false }).addTo(map);
 
-  const baseLayer = L.tileLayer(
+  const baseLayer = new TileLayer(
     "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
     {
       attribution:

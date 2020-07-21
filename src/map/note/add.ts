@@ -1,6 +1,6 @@
 "use strict";
 
-import L, { LeafletMouseEvent, Marker } from "leaflet";
+import { LeafletMouseEvent, Marker } from "leaflet";
 
 import { marker as markerStore, zoom as zoomStore } from "../store";
 
@@ -17,7 +17,7 @@ export default function (event: LeafletMouseEvent): void {
 
   if (zoom > 12) {
     if (marker === null) {
-      marker = L.marker(event.latlng).addTo(event.target);
+      marker = new Marker(event.latlng).addTo(event.target);
     } else {
       marker.setLatLng(event.latlng);
     }
