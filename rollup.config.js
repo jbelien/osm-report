@@ -1,15 +1,32 @@
 import dotenv from "dotenv";
-import svelte from "rollup-plugin-svelte";
-import resolve from "rollup-plugin-node-resolve";
-import commonjs from "rollup-plugin-commonjs";
+import commonjs from "@rollup/plugin-commonjs";
 import livereload from "rollup-plugin-livereload";
+import resolve from "@rollup/plugin-node-resolve";
 import replace from "@rollup/plugin-replace";
+import svelte from "rollup-plugin-svelte";
 import { terser } from "rollup-plugin-terser";
-import typescript from "rollup-plugin-typescript";
+import typescript from "@rollup/plugin-typescript";
 
 dotenv.config();
 
 const production = !process.env.ROLLUP_WATCH;
+
+function serve () {
+  let started = false;
+
+  return {
+    writeBundle () {
+      if (!started) {
+        started = true;
+
+        require("child_process").spawn("npm", ["run", "start", "--", "--dev"], {
+          stdio: ["ignore", "inherit", "inherit"],
+          shell: true
+        });
+      }
+    }
+  };
+}
 
 export default {
   input: "src/main.ts",
@@ -25,6 +42,7 @@ export default {
         env: process.env
       })
     }),
+
     svelte({
       // enable run-time checks when not in production
       dev: !production,
@@ -47,6 +65,10 @@ export default {
     }),
     commonjs(),
     typescript(),
+
+    // In dev mode, call `npm run start` once
+    // the bundle has been generated
+    !production && serve(),
 
     // Watch the `public` directory and refresh the
     // browser on changes when not in production
