@@ -6,6 +6,7 @@ import replace from "@rollup/plugin-replace";
 import svelte from "rollup-plugin-svelte";
 import { terser } from "rollup-plugin-terser";
 import typescript from "@rollup/plugin-typescript";
+import sveltePreprocess from "svelte-preprocess";
 
 dotenv.config();
 
@@ -43,7 +44,10 @@ export default {
       })
     }),
 
+    typescript({ sourceMap: !production }),
+
     svelte({
+      preprocess: sveltePreprocess(),
       // enable run-time checks when not in production
       dev: !production,
       // we'll extract any component CSS out into
@@ -64,7 +68,6 @@ export default {
         importee === "svelte" || importee.startsWith("svelte/")
     }),
     commonjs(),
-    typescript(),
 
     // In dev mode, call `npm run start` once
     // the bundle has been generated

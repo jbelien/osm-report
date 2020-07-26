@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import Location from "./Location.svelte";
 
   import { map as mapStore, marker as markerStore } from "./map/store.ts";
@@ -6,7 +6,7 @@
 
   let note;
 
-  function handleSubmit() {
+  function handleSubmit(): void {
     submit(note, $mapStore);
   }
 </script>

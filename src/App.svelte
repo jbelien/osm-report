@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import Sidebar from './Sidebar.svelte'
   import Map from './Map.svelte'
 </script>

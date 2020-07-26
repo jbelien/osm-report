@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { onMount } from "svelte";
 
   import init from "./map/init.ts";
@@ -6,13 +6,13 @@
   import { zoom } from "./map/store";
   import Permalink from "./map/permalink";
 
-  let container;
+  let container: HTMLElement;
 
   onMount(() => {
     const map = init(container);
     const permalink = new Permalink(map);
 
-    return () => {};
+    return () => { };
   });
 </script>
 

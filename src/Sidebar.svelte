@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import Title from './Title.svelte'
   import Form from './Form.svelte'
 </script>

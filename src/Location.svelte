@@ -1,10 +1,10 @@
-<script>
+<script lang="ts">
   import { beforeUpdate } from "svelte";
 
-  export let longitude;
-  export let latitude;
+  export let longitude: number;
+  export let latitude: number;
 
-  beforeUpdate(() => {
+  beforeUpdate((): void => {
     longitude = Math.round(longitude * 1000000) / 1000000;
     latitude = Math.round(latitude * 1000000) / 1000000;
   });
