@@ -32,7 +32,7 @@ function serve () {
 export default {
   input: "src/main.ts",
   output: {
-    sourcemap: false,
+    sourcemap: true,
     format: "iife",
     name: "app",
     file: "public/bundle.js"
