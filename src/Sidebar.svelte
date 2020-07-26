@@ -16,7 +16,8 @@
     font-size: small;
     text-align: center;
   }
-  footer > a {
+
+  footer>a {
     text-decoration: none;
   }
 </style>
@@ -26,7 +27,10 @@
   <div>
     <p>Spotted a mistake or something missing? Let other mappers know so we can fix it.</p>
     <p>Click in the map and type a note to explain the problem.</p>
-    <p>Your note is public and may be used to update the map, so don't enter personal information, or information from copyrighted maps or directory listings.</p>
+    <p>
+      Your note is public and may be used to update the map, so don't enter personal information, or information from
+      copyrighted maps or directory listings.
+    </p>
   </div>
   <Form />
   <footer>

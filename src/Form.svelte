@@ -35,6 +35,7 @@
     padding: 10px;
     width: 100%;
   }
+
   button:hover {
     background-color: #ccc;
   }
