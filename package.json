@@ -31,7 +31,7 @@
     "leaflet": "^1.6.0",
     "leaflet.locatecontrol": "^0.72.0",
     "moment": "^2.27.0",
-    "svelte": "^3.24.0"
+    "svelte": "^3.24.1"
   },
   "scripts": {
     "build": "rollup -c",
