@@ -21,7 +21,7 @@ export default function (container: HTMLElement): Map {
 
   (new Control.Scale()).addTo(map);
 
-  // @ts-expect-error
+  // @ts-expect-error There is no TypeScript definition for Leafet.LocateControl
   L.control.locate({ showPopup: false }).addTo(map);
 
   const baseLayer = new TileLayer(
