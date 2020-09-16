@@ -11,7 +11,7 @@
 </script>
 
 <div>
-  <i class="icon-location"></i>
+  <i class="mi-location"></i>
   <span id="longitude">{longitude}</span>
   <span id="latitude">{latitude}</span>
 </div>

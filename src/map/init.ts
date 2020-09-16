@@ -23,7 +23,7 @@ export default function (container: HTMLElement): Map {
 
   // @ts-expect-error There is no TypeScript definition for Leafet.LocateControl
   L.control.locate({
-    icon: "icon-location",
+    icon: "mi-location",
     iconElementTag: "i",
     showPopup: false
   }).addTo(map);

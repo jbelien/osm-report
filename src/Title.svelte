@@ -11,7 +11,7 @@
 
 <div>
   <h1>
-    <i class="icon-circle-warning"></i>
+    <i class="mi-circle-warning"></i>
     OSM Report
   </h1>
 </div>

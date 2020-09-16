@@ -53,7 +53,7 @@
   <Location longitude="{$markerStore.getLatLng().lng}" latitude="{$markerStore.getLatLng().lat}"/>
   {/if}
   <button type="submit" disabled="{!note || !$markerStore}">
-    <i class="icon-send"></i>
+    <i class="mi-send"></i>
     Send
   </button>
 </form>
