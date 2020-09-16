@@ -11,7 +11,7 @@
 
 <div>
   <h1>
-    <i class="fas fa-exclamation-circle"></i>
+    <i class="icon-circle-warning"></i>
     OSM Report
   </h1>
 </div>

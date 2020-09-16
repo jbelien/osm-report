@@ -22,7 +22,11 @@ export default function (container: HTMLElement): Map {
   (new Control.Scale()).addTo(map);
 
   // @ts-expect-error There is no TypeScript definition for Leafet.LocateControl
-  L.control.locate({ showPopup: false }).addTo(map);
+  L.control.locate({ 
+    icon: "icon-location",
+    iconElementTag: "i",
+    showPopup: false
+  }).addTo(map);
 
   const baseLayer = new TileLayer(
     "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",

@@ -11,7 +11,7 @@
 </script>
 
 <div>
-  <i class="fas fa-map-marker-alt"></i>
+  <i class="icon-location"></i>
   <span id="longitude">{longitude}</span>
   <span id="latitude">{latitude}</span>
 </div>
