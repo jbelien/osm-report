@@ -30,7 +30,7 @@
   "dependencies": {
     "leaflet": "^1.7.1",
     "leaflet.locatecontrol": "^0.72.0",
-    "moment": "^2.28.0",
+    "moment": "^2.29.0",
     "svelte": "^3.25.1"
   },
   "scripts": {
