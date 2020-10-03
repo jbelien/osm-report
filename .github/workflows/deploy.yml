@@ -18,6 +18,8 @@ jobs:
         run: |
           npm install
           npm run build
+        env:
+          TAGS: "#osmbe"
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@3.6.2
