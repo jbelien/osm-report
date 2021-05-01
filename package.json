@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "leaflet": "^1.7.1",
-    "leaflet.locatecontrol": "^0.72.2",
+    "leaflet.locatecontrol": "^0.73.0",
     "moment": "^2.29.1",
     "svelte": "^3.38.0"
   },
